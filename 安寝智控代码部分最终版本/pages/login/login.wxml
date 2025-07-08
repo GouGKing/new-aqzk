@@ -1,0 +1,31 @@
+<view class="container">
+    <view class="role-switch">
+      <button class="role-item {{isStudent ? 'active' : ''}}" bindtap="switchToStudent">学生登录</button>
+      <button class="role-item {{!isStudent ? 'active' : ''}}" bindtap="switchToAdmin">管理员登录</button>
+    </view>
+    
+    <!-- 根据角色显示不同的输入框标签 -->
+    <input 
+      placeholder="{{isStudent ? '请输入学号' : '请输入管理员账号'}}" 
+      bindinput="{{isStudent ? 'onStudentIdInput' : 'onAccountInput'}}" 
+      class="bordered-input" 
+      value="{{isStudent ? studentId : account}}"
+    />
+    
+    <view class="password-input-container">
+    <input 
+      placeholder="请输入密码" 
+      type="{{passwordType}}"  
+      password="{{passwordType === 'password'}}"
+      bindinput="onPasswordInput" 
+      class="password-input" 
+    />
+    <image
+      src="{{isPasswordVisible ? '/pages/images/eye-open.png' : '/pages/images/eye-close.png'}}"
+      class="password-visibility-icon"
+      bindtap="togglePasswordVisibility"
+    />
+  </view>
+    
+    <button class="login-btn" bindtap="handleLogin">登录</button>
+  </view>

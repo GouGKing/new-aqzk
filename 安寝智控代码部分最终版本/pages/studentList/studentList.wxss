@@ -1,0 +1,17 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.student-item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  width: calc(50% - 20px);
+}
+
+.student-item text {
+  display: block;
+  margin-bottom: 5px;
+}

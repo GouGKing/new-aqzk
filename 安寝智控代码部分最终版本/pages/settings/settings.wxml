@@ -1,0 +1,6 @@
+<view class="settings-page"></view>
+<view class="settings-title">设置</view>
+<view class="setting-item">
+  <text class="setting-item-text">修改学生密码</text>
+  <view class="arrow-icon"></view>
+</view>

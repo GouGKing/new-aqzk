@@ -1,0 +1,7 @@
+<view class="container">
+  <view class="student-item" wx:for="{{students}}" wx:key="id">
+    <text>姓名: {{item.student_name}}</text>
+    <text>学号: {{item.student_id}}</text>
+    <text>寝室号: {{item.dormitory_number}}</text>
+  </view>
+</view>

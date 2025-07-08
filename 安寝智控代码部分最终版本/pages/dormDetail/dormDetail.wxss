@@ -1,0 +1,228 @@
+/* 基础布局样式 */
+.light-monitor-container {
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100rpx;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.content {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  padding-bottom: 12rpx;
+  border-bottom: 2rpx solid #f0f0f0;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -2rpx;
+  left: 0;
+  width: 60rpx;
+  height: 2rpx;
+  background-color: #4CAF50;
+  border-radius: 1rpx;
+}
+
+.update-time {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 20rpx;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.error-message {
+  display: flex;
+  align-items: center;
+  color: #f44336;
+  font-size: 26rpx;
+  margin-top: 20rpx;
+  padding: 12rpx 16rpx;
+  background-color: rgba(244, 67, 54, 0.1);
+  border-radius: 8rpx;
+  border-left: 4rpx solid #f44336;
+}
+
+.error-icon {
+  margin-right: 10rpx;
+  font-size: 32rpx;
+}
+
+
+/* 灯光状态显示样式 */
+.light-status-section {
+  margin-bottom: 30rpx;
+}
+
+.status-display {
+  width: 100%;
+  height: 180rpx;
+  border-radius: 12rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 40rpx;
+  font-weight: bold;
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.status-display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0));
+  z-index: 1;
+}
+
+.status-text {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* 声音状态显示样式 */
+.sound-status-section {
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background-color: #f9f9f9;
+  border-radius: 12rpx;
+  border-left: 4rpx solid #4CAF50;
+}
+
+.sound-display {
+  display: inline-block;
+  padding: 12rpx 24rpx;
+  border-radius: 30rpx;
+  color: white;
+  font-weight: 500;
+  font-size: 28rpx;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.sound-normal {
+  background-color: #4CAF50;
+  background-image: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);
+}
+
+.sound-alert {
+  background-color: #F44336;
+  background-image: linear-gradient(135deg, #F44336 0%, #D32F2F 100%);
+  animation: alertPulse 2s infinite;
+}
+
+@keyframes alertPulse {
+  0% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7); }
+  70% { box-shadow: 0 0 0 10rpx rgba(244, 67, 54, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(244, 67, 54, 0); }
+}
+
+.sound-text {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* 声音警报提示框样式 */
+.sound-alert-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.alert-content {
+  background-color: #fff;
+  padding: 40rpx;
+  border-radius: 16rpx;
+  width: 80%;
+  max-width: 640rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 12rpx 32rpx rgba(0, 0, 0, 0.2);
+  animation: alertSlideIn 0.3s ease;
+}
+
+@keyframes alertSlideIn {
+  from { transform: translateY(-50rpx); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.alert-icon {
+  font-size: 60rpx;
+  color: #f44336;
+  margin-bottom: 16rpx;
+}
+
+.alert-message {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12rpx;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.alert-time {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 24rpx;
+}
+
+.alert-close {
+  background-color: #f44336;
+  color: #fff;
+  padding: 12rpx 40rpx;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  width: 240rpx;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.alert-close:active {
+  transform: scale(0.95);
+  opacity: 0.9;
+}

@@ -1,0 +1,44 @@
+<view class="light-monitor-container">
+  <!-- 加载状态 -->
+  <view class="loading" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+  
+  <!-- 主要内容区 -->
+  <view class="content" wx:else>
+    <!-- 灯光状态显示（保持不变） -->
+    <view class="light-status-section">
+      <view class="section-title">灯光状态</view>
+      <view class="status-display" style="background-color: {{backgroundColor}}">
+        <text class="status-text">{{statusText}}</text>
+      </view>
+    </view>
+    
+    <!-- 新增：声音状态显示 -->
+    <view class="sound-status-section" wx:if="{{enableSoundAlert}}">
+      <view class="section-title">声音状态</view>
+      <view class="sound-display {{soundClass}}">
+        <text class="sound-text">{{soundText}}</text>
+      </view>
+    </view>
+    
+    <!-- 上次更新时间（保持不变） -->
+    <view class="update-time">上次更新: {{lastUpdate}}</view>
+    
+    <!-- 错误信息（保持不变） -->
+    <view class="error-message" wx:if="{{errorCount > 0}}">
+      <text class="error-icon">⚠️</text>
+      <text class="error-text">{{lastError}}</text>
+    </view>
+  </view>
+  
+  <!-- 新增：声音警报提示框 -->
+  <view class="sound-alert-popup" style="display: {{soundAlertVisible ? 'flex' : 'none'}}">
+    <view class="alert-content">
+      <text class="alert-icon">⚠️</text>
+      <text class="alert-message">检测到声音过高！</text>
+      <text class="alert-time">时间: {{lastSoundAlert}}</text>
+      <button class="alert-close" bindtap="closeSoundAlert">关闭</button>
+    </view>
+  </view>
+</view>

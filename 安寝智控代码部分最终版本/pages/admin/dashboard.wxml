@@ -1,0 +1,112 @@
+<view class="container">
+  <!-- 顶部提示框 -->
+  <view class="status-alert" style="background-color: {{alertColor}}; opacity: {{alertVisible? '1' : '0'}}" wx:if="{{alertVisible}}">
+    <text class="alert-text">{{alertMsg}}</text>
+  </view>
+  
+  <!-- 内容区域 -->
+  <view class="content-container">
+    <!-- 添加信息界面 -->
+    <view wx:if="{{currentTab === 'addInfo'}}" class="tab-content">
+      <view class="header">
+        <view class="setting-btn" bindtap="navigateToSettings">⚙️</view>
+      </view>
+      <view class="button-container1">
+        <button bindtap="showStudentInfoInput" class="center-button">学生信息</button>
+      </view>
+      <view wx:if="{{showStudentInfoFields}}" class="input-fields">
+        <view class="input-wrapper">
+        <input placeholder="请输入学号" bindinput="onStudentIdInput" 
+        class="rounded-input" />
+      </view>
+      <view class="input-wrapper">
+        <input placeholder="请输入学生姓名" bindinput="onStudentNameInput" 
+        class="rounded-input" />
+      </view>
+      <view class="input-wrapper">
+        <input placeholder="请输入寝室号" bindinput="onDormitoryNumberInput" 
+        class="rounded-input" />
+      </view>
+      </view>
+      <view class="button-container1">
+        <button bindtap="addStudent">添加学生信息</button>
+        <button bindtap="getStudents">获取学生信息</button>
+      </view>
+      <view wx:for="{{students}}" wx:key="student_id">
+        <text>学号: {{item.student_id}}</text>
+        <text>姓名: {{item.student_name}}</text>
+        <text>寝室号: {{item.dormitory_number}}</text>
+      </view>
+    </view>
+    
+    <!-- 寝室状况界面 -->
+    <view wx:if="{{currentTab === 'dormStatus'}}" class="tab-content">
+      <view class="dormitory-group">
+        <!-- 新增多个寝室按钮 -->
+        <view class="dorm-row">
+          <view class="dorm-group" bindtap="handleDormitoryJump" data-dorm="614">
+            <text>614寝室</text>
+          </view>
+          <view class="dorm-group" bindtap="handleDormitoryJump" data-dorm="615">
+            <text>615寝室</text>
+          </view>
+          <view class="dorm-group" bindtap="handleDormitoryJump" data-dorm="616">
+            <text>616寝室</text>
+          </view>
+        </view>
+        <view class="dorm-row">
+          <view class="dorm-group" bindtap="handleDormitoryJump" data-dorm="617">
+            <text>617寝室</text>
+          </view>
+          <view class="dorm-group" bindtap="handleDormitoryJump" data-dorm="618">
+            <text>618寝室</text>
+          </view>
+          <view class="dorm-group" bindtap="handleDormitoryJump" data-dorm="619">
+            <text>619寝室</text>
+          </view>
+        </view>
+        <view wx:if="{{showDormDetail}}" class="dorm-detail">
+          <text>寝室成员：{{dormMembers}}</text>
+          <text>寝室长：{{dormLeader}}</text>
+          <text>门锁状态：{{doorStatus}}</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 发送公告界面 -->
+    <view wx:if="{{currentTab === 'sendAnnouncement'}}" class="tab-content announcement-page">
+      <view class="page-container">
+        <view class="announcement-container">
+          <view class="input-group">
+            <label for="link">外部链接资料</label>
+            <input type="text" id="link" bindinput="handleLinkInput" 
+                   placeholder="请输入链接" value="{{link}}" />
+          </view>
+          <view class="input-group">
+            <label for="text">文本内容</label>
+            <textarea class="announcement-textarea" id="text" 
+                      bindinput="handleTextInput" placeholder="请输入公告内容" 
+                      value="{{text}}"></textarea>
+          </view>
+          <button class="submit-button" bindtap="submitData">提交</button>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 底部导航栏 -->
+  <view class="button-container">
+    <button class="custom-btn {{currentTab === 'addInfo'? 'active' : ''}}" bindtap="switchTab" data-tab="addInfo">
+      <view class="btn-icon">📝</view>
+      <view class="btn-text">添加信息</view>
+    </button>
+    <button class="custom-btn {{currentTab === 'dormStatus'? 'active' : ''}}" bindtap="switchTab" data-tab="dormStatus">
+      <view class="btn-icon">🏠</view>
+      <view class="btn-text">寝室状况</view>
+    </button>
+    <button class="custom-btn {{currentTab === 'sendAnnouncement'? 'active' : ''}}" bindtap="switchTab" data-tab="sendAnnouncement">
+      <view class="btn-icon">📢</view>
+      <view class="btn-text">发送公告</view>
+    </button>
+  </view>
+</view>  

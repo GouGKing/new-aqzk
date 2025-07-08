@@ -1,0 +1,76 @@
+<view class="container">
+  <view 
+    class="status-alert" 
+    style="background-color: {{alertColor}}; opacity: {{alertVisible? '1' : '0'}}"
+    wx:if="{{alertVisible}}"
+  >
+    <text class="alert-text">{{alertMsg}}</text>
+  </view>
+  <view class="header">
+  </view>
+
+  <!-- 顶部全局轮播图已删除 -->
+
+  <!-- 公告区域 - 整合外部链接和文本内容 -->
+  <view wx:if="{{currentTab === 'announcement'}}" class="announcement-container">
+    <!-- 轮播图独立区域 -->
+    <swiper class="image-swiper" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" 
+            interval="{{interval}}" duration="{{duration}}" circular="{{circular}}">
+      <block wx:for="{{imageList}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item.url}}" class="slide-image" mode="aspectFill"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="announcement-title">公告</view>
+    <view class="announcement-content scroll-container">
+      <view class="info">
+        <text>外部链接资料：{{announcement.link}}</text>
+      </view>
+      <view class="info">
+        <text>文本内容：{{announcement.text}}</text>
+      </view>
+      <!-- 消息显示部分 -->
+      <view class="message-board border border-blue-300 rounded-lg p-3 bg-blue-50 my-2">
+        <text>消息：{{ message || '暂无消息' }}</text>
+      </view>
+      <!-- 考试安排显示部分 -->
+      <view class="exam-schedule border border-orange-300 rounded-lg p-3 bg-orange-50 my-2">
+        <text>考试安排：{{ examSchedule || '暂无安排' }}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 智能锁部分 -->
+  <view wx:if="{{currentTab ==='smartLock'}}" class="smart-lock-container">
+    <view class="smart-lock {{doorStatus === '门锁未关' ? 'bg-red-500' : doorStatus === '门锁关闭' ? 'bg-green-500' : 'bg-gray-400'}}">
+      <text>{{doorStatus}}</text>
+    </view>
+  </view>
+  
+  <view wx:if="{{currentTab ==='my'}}"class="my-container">
+    <view class="container1">
+    <view class="student-item" wx:for="{{students}}" wx:key="id">
+    <text>姓名: {{item.student_name}}</text>
+    <text>学号: {{item.student_id}}</text>
+    <text>寝室号: {{item.dormitory_number}}</text>
+  </view>
+  </view>
+  </view>
+
+  <view class="button-container">
+    <button class="custom-btn {{currentTab === 'announcement'? 'active' : ''}}" bindtap="switchTab" data-tab="announcement">
+      <view class="btn-icon">📄</view>
+      <view class="btn-text">公告</view>
+    </button>
+    <button class="custom-btn {{currentTab ==='smartLock'? 'active' : ''}}" bindtap="switchTab" data-tab="smartLock">
+      <view class="btn-icon">🔒</view>
+      <view class="btn-text">智能设备</view>
+    </button>
+    <button class="custom-btn {{currentTab ==='my'? 'active' : ''}}" bindtap="switchTab" data-tab="my">
+      <view class="btn-icon">👤</view>
+      <view class="btn-text">我的</view>
+    </button>
+  </view>
+</view>

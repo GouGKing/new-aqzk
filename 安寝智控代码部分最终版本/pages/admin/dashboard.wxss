@@ -1,0 +1,269 @@
+.container {
+  padding: 20rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 120rpx; /* 预留底部导航栏高度 */
+}
+
+.tab-content {
+  padding: 40rpx;
+}
+button {
+  background-color: #007aff; /* 蓝色 */
+  color: white;
+}
+/* 输入框容器样式（控制输入框与边框距离） */
+.input-wrapper {
+  margin-bottom: 20rpx; /* 输入框垂直间距 */
+  border-radius: 16rpx; /* 容器圆角，与输入框一致 */
+  overflow: hidden; /* 隐藏溢出的圆角 */
+}
+
+/* 输入框样式（添加内边距和圆角） */
+.rounded-input {
+  width: 100%;
+  min-height: 120rpx; /* 适当增高，配合内边距 */
+  padding: 0 40rpx; /* 左右内边距实现距离边框效果 */
+  border: 4rpx solid #e0e0e0; /* 边框颜色和粗细 */
+  border-radius: 16rpx; /* 圆角 */
+  font-size: 32rpx; /* 字体大小 */
+  background-color: #f8f8f8; /* 背景色 */
+  box-sizing: border-box; /* 包含内边距 */
+}
+
+/* 头部样式 */
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.setting-btn {
+  margin-left: auto;
+  font-size: 40rpx;
+  padding: 10rpx;
+  cursor: pointer;
+}
+
+/* 设置页面样式 */
+.settings-page {
+  padding: 20rpx;
+  min-height: 100vh;
+  background-color: #f8f8f8;
+}
+
+.back-btn {
+  font-size: 40rpx;
+  padding: 10rpx;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.settings-content {
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background-color: white;
+  border-radius: 10rpx;
+}
+
+/* 底部导航栏样式 */
+.button-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background-color: white;
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 999; /* 确保导航栏在最上层 */
+}
+
+.custom-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  padding: 5px 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-icon {
+  font-size: 48rpx;
+  color: #666;
+}
+
+.btn-text {
+  font-size: 28rpx;
+  color: #999;
+  margin-top: 4rpx;
+}
+
+.custom-btn.active .btn-icon,
+.custom-btn.active .btn-text {
+  color: #007aff; /* 选中状态蓝色 */
+}
+
+/* 原功能样式 */
+.button-container1 {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  gap: 20rpx;
+}
+
+.button-container button {
+  flex-basis: 48%;
+  margin-right: 4%;
+}
+
+.button-container button:last-child {
+  margin-right: 0;
+}
+
+.top-section,
+.page-container {
+  padding: 20rpx;
+  border-bottom: 1px solid #ccc;
+  background-color: #f9fafb;
+}
+
+/* 新增寝室区域样式 */
+.dormitory-group {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+}
+
+.dorm-row {
+  display: flex;
+  gap: 15rpx;
+}
+
+.dorm-group {
+  flex: 1;
+  background-color: #f0f0f0;
+  padding: 20rpx 10rpx;
+  cursor: pointer;
+  border-radius: 8rpx;
+  text-align: center;
+  font-size: 32rpx;
+}
+
+/* 选中状态样式 */
+.dorm-group:active {
+  background-color: #e0e0e0;
+}
+
+/* 优化详情展示样式 */
+.dorm-detail {
+  background-color: #e0e0e0;
+  padding: 10rpx;
+  margin-top: 10rpx;
+  border-radius: 8rpx;
+}
+
+.container1 {
+  background-color: white;
+  border-radius: 10rpx;
+  box-shadow: 0 0 5rpx rgba(0, 0, 0, 0.2);
+  padding: 20rpx;
+  margin-top: 20rpx;
+}
+
+.input-group {
+  margin-bottom: 20rpx;
+}
+
+.input-group label {
+  display: block;
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+  color: #333;
+}
+
+.input-group input {
+  min-height: 100rpx;
+  line-height: 100rpx;
+}
+
+/* 发送公告页面样式 */
+.announcement-page {
+  padding: 30rpx;
+}
+
+.announcement-container {
+  background-color: white;
+  border-radius: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+  padding: 50rpx 40rpx;
+  margin: 30rpx 0;
+}
+
+.announcement-page .input-group {
+  margin-bottom: 40rpx;
+}
+
+.announcement-page .input-group label {
+  display: block;
+  font-size: 36rpx;
+  font-weight: 500;
+  margin-bottom: 16rpx;
+  color: #333;
+}
+
+.announcement-page .input-group input,
+.announcement-textarea {
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+  border: 4rpx solid #e0e0e0;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  background-color: #f8f8f8;
+}
+
+.announcement-page .input-group input {
+  height: 120rpx;
+}
+
+.announcement-textarea {
+  min-height: 500rpx;
+  max-height: 800rpx;
+  resize: vertical;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 32rpx 0;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 16rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  margin-top: 20rpx;
+  box-shadow: 0 6rpx 16rpx rgba(0, 122, 255, 0.2);
+  transition: all 0.2s;
+}
+
+.submit-button:active {
+  opacity: 0.8;
+  transform: translateY(2rpx);
+}  
